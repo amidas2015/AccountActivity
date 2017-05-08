@@ -8,7 +8,7 @@ cd AccountActivity
 
 composer install
 
-Configure environment configuration file .env for your MySQL Database (host, database, user, password)
+Fill in the MySQL database information in the .env file (host, database, user, password)
 
 php artisan migrate
 
