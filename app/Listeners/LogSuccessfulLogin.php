@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use AccountActivity\UserLoginHistory;
 
 class LogSuccessfulLogin
@@ -31,7 +32,7 @@ class LogSuccessfulLogin
         $user = $event->user;
         $UserLoginHistory = new UserLoginHistory();
         $UserLoginHistory->user_id = $user->id;
-        $UserLoginHistory->user_ip = \DB::raw('INET_ATON(\''.($this->request->getClientIp()).'\')');
+        $UserLoginHistory->user_ip = DB::raw('INET_ATON(\''.($this->request->getClientIp()).'\')');
         $UserLoginHistory->save();
     }
 }
